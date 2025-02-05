@@ -1,20 +1,16 @@
-import React from "react"
-import './App.css'
+import React from "react";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import Login from "./components/login";
+import Home from "./components/home";
 
-export default function Login(){
+export default function App(){
   return(
-    <div className="container">
-      <h1>Login</h1>
-      <input
-        placeholder="User"
-        className="caixa"
-      />
-      <input
-        placeholder="Password"
-        className="caixa"
-        type="password"
-      />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/home" element={<Home/>}/>
+      </Routes>
+    </Router>
   )
 }
-
