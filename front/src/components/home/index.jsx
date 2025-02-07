@@ -28,7 +28,24 @@ export default function Home() {
         }
 
         fetchData()
-    }, [])
+    }, [dados])
+
+    const apagar = async (id)=>{
+        if (window.confirm("Tem certeza? ")){
+            try {
+                await axios.delete(`http://127.0.0.1:8000/api/professor/${id}`,
+                    {
+                        headers:{
+                            Authorization: `Bearer ${token}`
+                        }
+                    }
+                )
+                setDados(dados.filter((professor)=>{professor.id !== id}))
+            } catch (error) {
+                console.error(error)
+            }
+        }
+    }
 
     return (
         <div className="container_home">
@@ -55,7 +72,7 @@ export default function Home() {
                                 <tr key={professor.id}>
                                     <td>
                                         <FaEdit className="edit" />
-                                        <FaTrash className="delete" />
+                                        <FaTrash className="delete" onClick={()=>apagar(professor.id)}/>
                                     </td>
                                     <td>{professor.id}</td>
                                     <td>{professor.ni}</td>
