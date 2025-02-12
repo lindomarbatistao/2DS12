@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa'
 import './styles.css'
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function Home() {
     const [dados, setDados] = useState([])
@@ -30,17 +32,17 @@ export default function Home() {
         fetchData()
     }, [dados])
 
-    const apagar = async (id)=>{
-        if (window.confirm("Tem certeza? ")){
+    const apagar = async (id) => {
+        if (window.confirm("Tem certeza? ")) {
             try {
                 await axios.delete(`http://127.0.0.1:8000/api/professor/${id}`,
                     {
-                        headers:{
+                        headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }
                 )
-                setDados(dados.filter((professor)=>{professor.id !== id}))
+                setDados(dados.filter((professor) => { professor.id !== id }))
             } catch (error) {
                 console.error(error)
             }
@@ -49,11 +51,8 @@ export default function Home() {
 
     return (
         <div className="container_home">
+            <Header />
             <body>
-                <header>
-                    <h1>Lista de professores</h1>
-                </header>
-
                 <div className="lista">
                     <table>
                         <thead>
@@ -72,7 +71,7 @@ export default function Home() {
                                 <tr key={professor.id}>
                                     <td>
                                         <FaEdit className="edit" />
-                                        <FaTrash className="delete" onClick={()=>apagar(professor.id)}/>
+                                        <FaTrash className="delete" onClick={() => apagar(professor.id)} />
                                     </td>
                                     <td>{professor.id}</td>
                                     <td>{professor.ni}</td>
@@ -85,18 +84,20 @@ export default function Home() {
                         </tbody>
                     </table>
                 </div>
-                
+
                 <footer>
                     <div className="btn1">
-                        <FaPlus className="adicionar"/>
+                        <FaPlus className="adicionar" />
                     </div>
                     <div className="pesquisar">
-                        <input placeholder="id"/>
+                        <input placeholder="id" />
                     </div>
                     <div className="btn2">
                         <FaSearch className="procurar" />
                     </div>
                 </footer>
+
+                <Footer />
             </body>
         </div>
     )
