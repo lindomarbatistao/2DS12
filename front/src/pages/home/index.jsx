@@ -51,9 +51,9 @@ export default function Home() {
     }
 
     return (
-        <div className="container_home">
+        <div >
             <Header />
-            <body>
+            <div className="container_home">
                 <div className="lista">
                     <table>
                         <thead>
@@ -97,8 +97,8 @@ export default function Home() {
                         <FaSearch className="procurar" />
                     </div>
                 </div>
+                </div>
                 <Footer />
-            </body>
         </div>
     )
 }
