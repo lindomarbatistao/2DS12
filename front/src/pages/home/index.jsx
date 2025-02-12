@@ -5,6 +5,7 @@ import './styles.css'
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
+
 export default function Home() {
     const [dados, setDados] = useState([])
     const token = localStorage.getItem('token')
@@ -85,7 +86,7 @@ export default function Home() {
                     </table>
                 </div>
 
-                <footer>
+                <div className="footer_table">
                     <div className="btn1">
                         <FaPlus className="adicionar" />
                     </div>
@@ -95,8 +96,7 @@ export default function Home() {
                     <div className="btn2">
                         <FaSearch className="procurar" />
                     </div>
-                </footer>
-
+                </div>
                 <Footer />
             </body>
         </div>
