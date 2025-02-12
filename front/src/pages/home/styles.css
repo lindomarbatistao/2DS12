@@ -13,3 +13,48 @@
     border-radius: 5px;
     padding: 20px;
 }
+
+.campos{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+}
+
+.col1{
+    background-color: aqua;
+    width: 25px;
+}
+.col2{
+    background-color: rgb(209, 197, 37);
+    width: 25px;
+}
+.col3{
+    background-color: aqua;
+    width: 35px;
+}
+.col4{
+    background-color: rgb(209, 197, 37);
+    width: 130px;
+}
+.col5{
+    background-color: aqua;
+    width: 200px;
+}
+.col6{
+    background-color: rgb(209, 197, 37);
+    width: 200px;
+}
+.col7{
+    background-color: aqua;
+    width: 150px;
+}
+
+.col8{
+    background-color: rgb(209, 197, 37);
+    width: 25px;
+}

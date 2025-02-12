@@ -69,17 +69,28 @@ export default function Home() {
                         </thead>
                         <tbody>
                             {dados.map((professor) => (
-                                <tr key={professor.id}>
-                                    <td>
-                                        <FaEdit className="edit" />
-                                        <FaTrash className="delete" onClick={() => apagar(professor.id)} />
+                                <tr key={professor.id} className="campos">
+                                    <td className="icons">
+                                        <div className="col1">
+                                            <FaEdit className="edit" />
+                                        </div>
+                                        <div className="col2">
+                                            <FaTrash className="delete" onClick={() => apagar(professor.id)} />
+                                        </div>
+
                                     </td>
-                                    <td>{professor.id}</td>
-                                    <td>{professor.ni}</td>
-                                    <td>{professor.nome}</td>
-                                    <td>{professor.email}</td>
-                                    <td>{professor.tel}</td>
-                                    <td>{professor.ocupacao}</td>
+                                    <div className="col3"><td>{professor.id}</td></div>
+                                    <div className="col4"><td>{professor.ni}</td></div>
+                                    <div className="col5"><td>{professor.nome}</td></div>
+                                    <div className="col6"><td>{professor.email}</td></div>
+                                    <div className="col7"><td>{professor.tel}</td></div>
+                                    <div className="col8"><td>{professor.ocupacao}</td></div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </tr>
                             ))}
                         </tbody>
@@ -97,8 +108,8 @@ export default function Home() {
                         <FaSearch className="procurar" />
                     </div>
                 </div>
-                </div>
-                <Footer />
+            </div>
+            <Footer />
         </div>
     )
 }
