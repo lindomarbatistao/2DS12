@@ -14,9 +14,8 @@ export default function Home() {
     const [professorSelecionado, setProfessorSelecionado] = useState(null)
 
     useEffect(() => {
-
         if (!token) return;
-
+        
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/professores',
@@ -33,7 +32,7 @@ export default function Home() {
         }
 
         fetchData()
-    }, [dados])
+    }, [])
 
     const apagar = async (id) => {
         if (window.confirm("Tem certeza? ")) {
@@ -50,6 +49,56 @@ export default function Home() {
                 console.error(error)
             }
         }
+    }
+
+    const criar = async(novoProfessor)=>{
+        console.log("Novo Professor: ", novoProfessor)
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/professor',
+                {
+                    ni: novoProfessor.ni,
+                    nome: novoProfessor.nome,
+                    email: novoProfessor.email,
+                    tel: novoProfessor.tel,
+                    ocupacao: novoProfessor.ocupacao
+                },{
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+            console.log("Dados inseridos com sucesso!", response.data)
+            setDados([...dados, novoProfessor])
+            setModalOpen(false)
+        } catch (error) {
+            console.error(error)
+        }
+
+    }
+
+    const atualizar = async (professorAtualizado)=>{
+        console.log("Professor atualizado: ", professorAtualizado)
+        try {
+            const response = await axios.put(`http://127.0.0.1:8000/api/professor/${professorAtualizado.id}`,
+                {
+                    ni: professorAtualizado.ni,
+                    nome: professorAtualizado.nome,
+                    email: professorAtualizado.email,
+                    tel: professorAtualizado.tel,
+                    ocupacao: professorAtualizado.ocupacao
+                },{
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+            console.log("Dados atualizados com sucesso!", response.data)
+            setDados(dados.map((professor)=> professor.id === professorAtualizado.id ? professorAtualizado : professor))
+            setModalOpen(false)
+        } catch (error) {
+            console.error(error)
+        }
+
     }
 
     return (
@@ -70,7 +119,7 @@ export default function Home() {
                                 <div className="col8"><th>OC</th></div>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody> 
                             {dados.map((professor) => (
                                 <tr key={professor.id} className="campos">
                                     <td className="icons">
@@ -87,13 +136,7 @@ export default function Home() {
                                     <div className="col5"><td>{professor.nome}</td></div>
                                     <div className="col6"><td>{professor.email}</td></div>
                                     <div className="col7"><td>{professor.tel}</td></div>
-                                    <div className="col8"><td>{professor.ocupacao}</td></div>
-
-
-
-
-
-
+                                    <div className="col8"><td>{professor.ocupacaoacao}</td></div>
                                 </tr>
                             ))}
                         </tbody>
@@ -102,7 +145,7 @@ export default function Home() {
 
                 <div className="footer_table">
                     <div className="btn1">
-                        <FaPlus className="adicionar" />
+                        <FaPlus className="adicionar" onClick={()=>{setModalOpen(true), setProfessorSelecionado(null)}}/>
                     </div>
                     <div className="id">
                         <input placeholder="id" />
@@ -114,6 +157,14 @@ export default function Home() {
                         <FaSearch className="procurar" />
                     </div>
                 </div>
+                <ModalProfessores
+                    isOpen={modalOpen}
+                    onClose={()=>setModalOpen(false)}
+                    professorSelecionado={professorSelecionado}
+                    setProfessorSelecionado={setProfessorSelecionado}
+                    criar={criar}
+                    atualizar={atualizar}
+                />
             </div>
             <Footer />
         </div>

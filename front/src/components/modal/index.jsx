@@ -14,8 +14,8 @@ const ModalProfessores = ({
     const [ni, setNi] = useState(professorSelecionado?.ni || '')
     const [nome, setNome] = useState(professorSelecionado?.nome || '')
     const [email, setEmail] = useState(professorSelecionado?.email || '')
-    const [cel, setCel] = useState(professorSelecionado?.cel || '')
-    const [ocup, setOcup] = useState(professorSelecionado?.ocup || '')
+    const [tel, setTel] = useState(professorSelecionado?.tel || '')
+    const [ocupacao, setOcupacao] = useState(professorSelecionado?.ocupacao || '')
 
     useEffect(()=>{
         if(professorSelecionado){
@@ -23,24 +23,25 @@ const ModalProfessores = ({
             setNi(professorSelecionado.ni || '')
             setNome(professorSelecionado.nome || '')
             setEmail(professorSelecionado.email || '')
-            setCel(professorSelecionado.cel || '')
-            setOcup(professorSelecionado.ocup || '')
+            setTel(professorSelecionado.tel || '')
+            setOcupacao(professorSelecionado.ocupacao || '')
         }else{
             setId('')
             setNi('')
             setNome('')
             setEmail('')
-            setCel('')
-            setOcup('')
+            setTel('')
+            setOcupacao('')
         }
     }, [])
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        const novoProfessor = {ni, nome, email, cel, ocup}
+        const novoProfessor = {ni, nome, email, tel, ocupacao}
         if(professorSelecionado){
-            atualizar({...professorSelecionado})
+            atualizar({...professorSelecionado, ...novoProfessor})
         }else{
+            console.log("Teste novo professor: ", novoProfessor)
             criar(novoProfessor)
         }
     }
@@ -71,16 +72,16 @@ const ModalProfessores = ({
                             onChange={(e)=>setEmail(e.target.value)}
                         />
                         <input
-                            className="cel-modal"
-                            value={cel}
-                            placeholder="cel"
-                            onChange={(e)=>setCel(e.target.value)}
+                            className="tel-modal"
+                            value={tel}
+                            placeholder="tel"
+                            onChange={(e)=>setTel(e.target.value)}
                         />
                         <input
-                            className="ocup-modal"
-                            value={ocup}
-                            placeholder="ocup"
-                            onChange={(e)=>setOcup(e.target.value)}
+                            className="ocupacao-modal"
+                            value={ocupacao}
+                            placeholder="ocupacao"
+                            onChange={(e)=>setOcupacao(e.target.value)}
                         />
                         <button type="submit">Salvar</button> 
                     </form>
