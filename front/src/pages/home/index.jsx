@@ -4,12 +4,14 @@ import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa'
 import './styles.css'
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import ModalProfessores from "../../components/modal";
 
 
 export default function Home() {
     const [dados, setDados] = useState([])
     const token = localStorage.getItem('token')
-    console.log("Token Home", token)
+    const [modalOpen, setModalOpen] = useState(false)
+    const [professorSelecionado, setProfessorSelecionado] = useState(null)
 
     useEffect(() => {
 
