@@ -62,8 +62,8 @@ export default function Home() {
                                 <div className="col2"></div>
                                 <div className="col3"><th>ID</th></div>
                                 <div className="col4"><th>NI</th></div>
-                                <div className="col5"><th>ID</th></div>
-                                <div className="col6"><th>NOME</th></div>
+                                <div className="col5"><th>NOME</th></div>
+                                <div className="col6"><th>EMAIL</th></div>
                                 <div className="col7"><th>TELEFONE</th></div>
                                 <div className="col8"><th>OC</th></div>
                             </tr>
