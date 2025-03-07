@@ -1,17 +1,18 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa'
-import './styles.css'
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ModalProfessores from "../../components/modal";
+import axios from "axios";
+import './styles.css'
 
 
 export default function Home() {
     const [dados, setDados] = useState([])
-    const token = localStorage.getItem('token')
     const [modalOpen, setModalOpen] = useState(false)
     const [professorSelecionado, setProfessorSelecionado] = useState(null)
+    const [seta, setSeta] = useState(false)
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
         if (!token) return;
@@ -32,7 +33,7 @@ export default function Home() {
         }
 
         fetchData()
-    }, [])
+    }, [seta])
 
     const apagar = async (id) => {
         if (window.confirm("Tem certeza? ")) {
@@ -45,6 +46,7 @@ export default function Home() {
                     }
                 )
                 setDados(dados.filter((professor) => { professor.id !== id }))
+                setSeta(!seta)
             } catch (error) {
                 console.error(error)
             }
@@ -54,7 +56,7 @@ export default function Home() {
     const criar = async(novoProfessor)=>{
         console.log("Novo Professor: ", novoProfessor)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/professor',
+            const response = await axios.post('http://127.0.0.1:8000/api/professores',
                 {
                     ni: novoProfessor.ni,
                     nome: novoProfessor.nome,
