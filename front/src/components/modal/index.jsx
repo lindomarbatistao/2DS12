@@ -6,6 +6,8 @@ const ModalProfessores = ({
     isOpen,
     onClose,
     professorSelecionado,
+    setSeta,
+    seta
 }) => {
     if (!isOpen) return null
 
@@ -29,25 +31,42 @@ const ModalProfessores = ({
         }
     }
 
-    const newTeacher = async () =>{
-        console.log("Chegou")
-      
-            await axios.post('http://127.0.0.1:8000/api/professores',
-                {
-                    ni: ni,
-                    nome: nome,
-                    email: email,
-                    tel: tel,
-                    ocupacao: ocupacao
-                },{
-                    headers:{
-                        Autorization: `Bearer ${token}`
-                    }
-                }
-            )
-            console.log("Professor inserido com sucesso!")
-            onClose(true)
-      
+    const newTeacher = async () => {
+        await axios.post('http://127.0.0.1:8000/api/professores',
+            {
+                ni: ni,
+                nome: nome,
+                email: email,
+                tel: tel,
+                ocupacao: ocupacao
+            }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+        )
+        console.log("Professor inserido com sucesso!")
+        setSeta(!seta)
+        onClose(true)
+    }
+
+    const editTeacher = async () => {
+        await axios.put(`http://127.0.0.1:8000/api/professor/${professorSelecionado.id}`,
+            {
+                ni: ni,
+                nome: nome,
+                email: email,
+                tel: tel,
+                ocupacao: ocupacao
+            }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+        )
+        console.log("Professor inserido com sucesso!")
+        setSeta(!seta)
+        onClose(true)
     }
 
     return (
@@ -92,13 +111,19 @@ const ModalProfessores = ({
                             />
                         </div>
                         <div className="caixa2">
-                            
+
                         </div>
 
                     </form>
                 </div>
                 <div className="footer-modal">
-                    <button type="submit" className="button-save" onClick={newTeacher}>Salvar</button>
+                    <button
+                        type="submit"
+                        className="button-save"
+                        onClick={professorSelecionado ? editTeacher : newTeacher}
+                    >
+                        {professorSelecionado ? "Atualizar" : "Salvar"}
+                    </button>
                 </div>
             </div>
         </div>
