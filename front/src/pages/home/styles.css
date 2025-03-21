@@ -1,23 +1,25 @@
-.container_home {
-    background-color: rgb(62, 239, 13);
-    max-width: 1000px;
-    width: 100vw;
-    height: 100vw;
+
+.home-container{
+    background-color: rgb(222, 224, 223) !important;
+    min-height: 100vh;
+    min-width: 100vw;
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
     align-items: center;
-    position: absolute;
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    border-radius: 5px;
-    padding: 20px;
+    left: 0; 
+    justify-content: center;
 }
 
 .body_home{
     display: flex;
     flex-direction: column;
-    width: 500px;
-    height: 100%;
+    width: 80vw;
+    height: 550px;
     background-color: brown;
+    align-items: center;
+}
+
+.button{
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
 }

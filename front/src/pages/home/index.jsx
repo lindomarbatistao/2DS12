@@ -9,12 +9,12 @@ import './styles.css'
 export default function Home() {
     const navigate = useNavigate()
     return (
-        <div className="container_home">
+        <div className="home-container">
             <Header />
             <div className="body_home">
                 <h1>Home</h1>
-                <button onClick={() => navigate('/teacher')}>Teachers</button>
-                <button onClick={() => navigate('/subjects')}>Subjects</button>
+                <button className="button" onClick={() => navigate('/teacher')}>Teachers</button>
+                <button className="button" onClick={() => navigate('/subjects')}>Subjects</button>
             </div>
             <Footer />
         </div>

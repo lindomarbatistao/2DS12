@@ -1,5 +1,10 @@
+.global {
+    background-color: aqua !important;
+}
+
+
 .container_home {
-    background-color: rgb(246, 172, 68);
+    background-color: rgb(83, 246, 68);
     max-width: 1000px;
     height: 600px;
     display: flex;

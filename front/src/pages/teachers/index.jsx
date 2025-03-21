@@ -86,7 +86,7 @@ export default function Teacher() {
     }
 
     return (
-        <div >
+        <div className="global">
             <Header />
             <div className="container_home">
                 <div className="lista">
