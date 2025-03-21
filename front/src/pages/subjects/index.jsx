@@ -141,7 +141,7 @@ export default function Subject() {
                         <FaSearch className="procurar" />
                     </div>
                 </div>
-                <Modal
+                <ModalSubjects
                     isOpen={modalOpen}
                     onClose={()=>setModalOpen(false)}
                     professorSelecionado={professorSelecionado}

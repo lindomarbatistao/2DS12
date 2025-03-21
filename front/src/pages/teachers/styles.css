@@ -2,17 +2,15 @@
     background-color: aqua !important;
 }
 
-
 .container_home {
-    background-color: rgb(83, 246, 68);
+    background-color: rgb(41, 207, 26);
     max-width: 1000px;
-    height: 600px;
+    max-height: 55vh;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
     position: absolute;
-    /* top: 50%;  */
     left: 50%; 
     transform: translate(-50%, -50%); 
     border-radius: 5px;
@@ -25,6 +23,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
+
 .icons{
     display: flex;
     flex-direction: row;

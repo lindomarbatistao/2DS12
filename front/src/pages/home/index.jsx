@@ -14,7 +14,7 @@ export default function Home() {
             <div className="body_home">
                 <h1>Home</h1>
                 <button className="button" onClick={() => navigate('/teacher')}>Teachers</button>
-                <button className="button" onClick={() => navigate('/subjects')}>Subjects</button>
+                <button className="button" onClick={() => navigate('/subject')}>Subjects</button>
             </div>
             <Footer />
         </div>
