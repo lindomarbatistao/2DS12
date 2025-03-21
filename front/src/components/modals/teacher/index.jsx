@@ -10,7 +10,7 @@ const ModalProfessores = ({
     seta
 }) => {
     if (!isOpen) return null
-
+    
     const [id, setId] = useState(professorSelecionado?.id ?? '')
     const [ni, setNi] = useState(professorSelecionado?.ni ?? '')
     const [nome, setNome] = useState(professorSelecionado?.nome ?? '')
@@ -18,7 +18,9 @@ const ModalProfessores = ({
     const [tel, setTel] = useState(professorSelecionado?.tel ?? '')
     const [ocupacao, setOcupacao] = useState(professorSelecionado?.ocupacao ?? '')
     const token = localStorage.getItem('token')
-
+    
+    console.log("TokenXXXXXXX: ", token);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault()
